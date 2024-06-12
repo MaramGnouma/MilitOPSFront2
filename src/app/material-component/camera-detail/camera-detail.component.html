@@ -1,0 +1,62 @@
+
+<div class="tout">
+  <div class="modal-header">
+    <h5 class="modal-title">Camera Details</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-body d-flex">
+        <div class="mission-info">
+          <h2 class="card-title">{{ camera.name }}</h2>
+         
+          <img [src]="camera.photo" class="img-fluid" alt="Montre Photo">
+
+
+
+
+        </div>
+
+
+        <div class="mission-table">
+          <p><strong>Technology :</strong> {{ camera.technologie }}</p>
+          <p><strong>Resolution :</strong> {{ camera.resolution }}</p>
+          <p><strong>Model :</strong> {{ camera.modele }}</p>
+          <p><strong>Sensor :</strong> {{ camera.capteur }}</p>
+          <p><strong>Dimensions :</strong> {{ camera.dimensions }}</p>
+
+
+
+          <!-- Ajoutez d'autres champs de détails de la caméra ici -->
+        </div>
+      </div>
+    </div>
+    <div class="row additional-details">
+      <div class="col">
+        <h2>Quantity and Availability : </h2>
+        <p><strong>Quantity :</strong> {{ camera.quantite }}</p>
+<br><br>
+
+        <button class="c-button c-button--gooey"> {{ camera.disponible ? 'Available' : 'Not Available' }}
+          <div class="c-button__blobs">
+          <div></div>
+          <div></div>
+          <div></div>
+          </div>
+        </button>
+        </div>
+
+        <div class="col">
+        <h3 >Description</h3>
+        <ul>
+          <li *ngFor="let de of camera.description">{{  de }}</li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- Ajoutez d'autres éléments ou sections au besoin -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary waves-effect" (click)="closeModal()">Close</button>
+  </div>
+</div>

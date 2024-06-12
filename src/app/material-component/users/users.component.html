@@ -1,0 +1,59 @@
+<h1>List of mission agents pending approval</h1>
+<br>
+<div class="form-group">
+  <h6 for="roleFilter" style="margin-left:38% ;">Filter by Role :</h6> <br>
+
+  <div class="tout">
+    <div class="select">
+      <select class="form-control" id="roleFilter" [(ngModel)]="selectedRole" (change)="filterUsersByRole()">
+        <option value="">All Roles</option>
+        <option value="Supervisor">Responsible</option>
+        <option value="Controller">Controller</option>
+      </select>
+    </div>
+  </div>
+</div>
+<br><br>
+<br>
+<br><br>
+<table class="container">
+  <thead>
+    <tr>
+      <th>
+        <h1>Name</h1>
+      </th>
+      <th>
+        <h1>Email</h1>
+      </th>
+      <th>
+        <h1>Role</h1>
+      </th>
+      <th>
+        <h1>Actions</h1>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers">
+
+      <td>{{ user.name }}</td>
+
+      <td>{{ user.email }}</td>
+      <td><span class="badge rounded-pill bg-danger">{{ user.role }}</span></td>
+      <td>
+        <span class="icon-container" (click)="onClickTrashIcon(user._id)">
+          <i class="fas fa-trash" style="color: rgb(184, 21, 21)"></i>
+        </span>
+        <span class="icon-container" (click)="acceptUser(user)">
+          <i class="fas fa-square-check" style="color: #058a05;"></i>
+        </span>
+        <span class="icon-container" (click)="openDetailUser(user._id)">
+          <i class="fas fa-circle-info" style="color: #013B63;"></i>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+
+<br>

@@ -1,0 +1,118 @@
+
+<div class="modal-header" style="background-color: #2d8cf0;width: 820px;">
+    <h4 class="modal-title">To modify a firearm</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+
+    <div class="modal-body" style="width: 820px;background-color: white;">
+
+    <form #firearmForm="ngForm" (ngSubmit)="saveChanges(firearmForm)">
+        <div class="form-group">
+          
+            <div class="row">
+                <div class="col-md-6 mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="materielData.name" name="name" required>
+
+ </div>
+
+    <div class="col-md-6 mb-3">
+
+            <label for="quantite">Quantity</label>
+            <input type="number" class="form-control" id="quantite" [(ngModel)]="materielData.quantite" name="quantite" required>
+</div></div>
+
+<div class="row">
+ 
+
+        <div class="col-md-6 mb-3">
+            <label for="dimensions" class="form-label">Dimensions</label>
+            <div *ngFor="let desc of materielData.dimensions; let i = index">
+              <input type="text" class="form-control mb-2" [(ngModel)]="materielData.dimensions[i]" name="dimensions{{i}}" required>
+              <button type="button" class="btn btn-danger btn-sm" (click)="removedimensions(i)">Remove</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" (click)="adddimensions()">Add Dimensions</button>
+          </div> 
+
+    <div class="col-md-6 mb-3">
+            <!-- Afficher le champ armements si défini -->
+      
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="armements" class="form-label">Armements</label>
+                <div *ngFor="let desc of materielData.armements; let i = index">
+                  <input type="text" class="form-control mb-2" [(ngModel)]="materielData.armements[i]" name="armements{{i}}" required>
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removearmements(i)">Remove</button>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" (click)="addarmements()">Add Armements</button>
+              </div> 
+    
+
+
+
+
+     
+
+         <!-- 
+                <div class="col-md-6 mb-3">
+
+            
+            <div *ngIf="materielData.accessoires && materielData.accessoires.length > 0">
+                <label for="accessoires">Accessoires</label>
+                <input type="text" class="form-control" id="accessoires" [(ngModel)]="materielData.accessoires" name="accessoires">
+            </div>
+            </div> -->
+        
+            <div class="col-md-6 mb-3">
+                <label for="accessoires" class="form-label">Accessoires</label>
+                <div *ngFor="let desc of materielData.accessoires; let i = index">
+                  <input type="text" class="form-control mb-2" [(ngModel)]="materielData.accessoires[i]" name="accessoires{{i}}" required>
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeaccessoires(i)">Remove</button>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" (click)="addaccessoires()">Add Accessoire</button>
+              </div> 
+        
+        </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="disponible">Available</label> &nbsp;
+                    <input type="checkbox" class="form-check-input" id="disponible" [(ngModel)]="materielData.disponible" name="disponible">
+        </div>
+                <div class="col-md-6 mb-3">
+
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" [(ngModel)]="materielData.desscription" name="desscription" required></textarea>
+            </div>
+           
+
+        </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+
+                <!-- Ajouter le champ photo -->
+     <!-- Ajouter le champ photo actuel -->
+  <label for="currentPhoto">Current Photo</label>
+  <img *ngIf="materielData.photo" [src]="materielData.photo" class="img-thumbnail" alt="Current Image" style="max-width: 200px; margin-top: 10px;">
+<br> 
+<label for="photo">New Photo</label>
+<input type="file" class="form-control" id="photo" (change)="handleFileInput($event)" required>
+<img *ngIf="selectedImage || materielData.photo" [src]="selectedImage ? selectedImage : materielData.photo" class="img-thumbnail" alt="Selected Image" style="max-width: 200px; margin-top: 10px;">
+        </div>
+        </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" [disabled]="!firearmForm.valid">Save changes</button>
+    </form>
+    </div>
+
+
+<div class="modal-footer" style="width: 820px;background-color: white;">
+ &nbsp;&nbsp;
+    <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+</div>

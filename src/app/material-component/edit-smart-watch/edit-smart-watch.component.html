@@ -1,0 +1,105 @@
+<div class="modal-header" style="width: 820px;background-color: #2d8cf0;">
+    <h4 class="modal-title">Edit Smartwatch</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    
+  </div>
+  <div class="modal-body" style="width: 820px;background-color: white;">
+    <form #smartwatchForm="ngForm" (ngSubmit)="saveChanges(smartwatchForm)">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="smartwatchData.nom" name="nom" required>
+        <div *ngIf="smartwatchForm.submitted && !smartwatchForm.controls.nom?.valid" class="text-danger">
+          Name is required.
+        </div>
+</div>
+<div class="col-md-6 mb-3">
+        <label for="name">Marque</label>
+        <input type="text" class="form-control" id="marque" [(ngModel)]="smartwatchData.marque" name="marque" required>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-3">
+        <label for="name">Screen Size</label>
+        <input type="text" class="form-control" id="size" [(ngModel)]="smartwatchData.size" name="size" required>
+</div>
+<div class="col-md-6 mb-3">
+        <label for="name">Featurese</label>
+        <input type="text" class="form-control" id="fonctionnalites" [(ngModel)]="smartwatchData.fonctionnalites" name="fonctionnalites" required>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-3">
+        <label for="name">Modele</label>
+        <input type="text" class="form-control" id="modele" [(ngModel)]="smartwatchData.modele" name="modele" required>
+</div>
+<div class="col-md-6 mb-3">
+        <label for="name">Display</label>
+        <input type="text" class="form-control" id="affichage" [(ngModel)]="smartwatchData.affichage" name="affichage" required>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-3">
+        <label for="name">Operating system
+        </label>
+        <input type="text" class="form-control" id="os" [(ngModel)]="smartwatchData.os" name="os" required>
+</div> <div class="col-md-6 mb-3">
+
+        <label for="name">Connectivity</label>
+        <input type="text" class="form-control" id="connectivity" [(ngModel)]="smartwatchData.connectivity" name="connectivity" required>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-3">
+        <label for="name">Battery</label>
+        <input type="text" class="form-control" id="batteryLife" [(ngModel)]="smartwatchData.batteryLife" name="batteryLife" required>
+</div>  
+
+
+<div class="col-md-6 mb-3">
+
+  <label for="name">Quantity</label>
+  <input type="number" class="form-control" id="quantite" [(ngModel)]="smartwatchData.quantite" name="quantite" required>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6 mb-3">
+
+    <label for="name">Description</label>
+    <textarea class="form-control" id="description" [(ngModel)]="smartwatchData.description" name="description" required></textarea>
+  </div>
+    <div class="col-md-6 mb-3">
+      <label for="disponible">Available</label> &nbsp;
+      <input type="checkbox" class="form-check-input" id="disponible" [(ngModel)]="smartwatchData.disponible" name="disponible" >
+</div>
+</div>
+        
+<div class="row">
+      <div class="col-md-6 mb-3">
+    
+        <!-- Ajouter le champ photo -->
+         <!-- Ajouter le champ photo actuel -->
+      <label for="currentPhoto">Current Photo</label>
+      <img *ngIf="smartwatchData.photo" [src]="smartwatchData.photo" class="img-thumbnail" alt="Current Image" style="max-width: 200px; margin-top: 10px;">
+    <br> </div>
+
+  <div class="col-md-6 mb-3">
+            <!-- Ajouter le champ photo -->
+            <label for="photo">New Photo</label>
+            <input type="file" class="form-control" id="photo" (change)="handleFileInput($event)">
+            <img *ngIf="selectedImage || smartwatchData.photo" [src]="selectedImage ? selectedImage : smartwatchData.photo" class="img-thumbnail" alt="Selected Image" style="max-width: 200px; margin-top: 10px;">
+            </div>
+            </div>
+      </div>
+      <!-- Add other fields here -->
+      <button type="submit" class="btn btn-primary" [disabled]="!smartwatchForm.valid">Save changes</button>
+
+    </form>
+  </div>
+  <div class="modal-footer" style="width: 820px;background-color: white;">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+  </div>
+  

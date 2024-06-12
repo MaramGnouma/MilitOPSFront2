@@ -1,0 +1,136 @@
+<div class="modal-header" style="width: 820px;background-color: #2d8cf0">
+  <h5 class="modal-title">Add new SmartWatch</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body" style="width: 820px;background-color: white;">
+  <form [formGroup]="addSmartwatchForm" (ngSubmit)="saveChanges()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="nom" class="form-label">Name</label>
+        <input type="text" class="form-control" id="nom" formControlName="nom" required>
+        <div *ngIf="addSmartwatchForm?.get('nom')?.invalid && addSmartwatchForm?.get('nom')?.touched" class="text-danger">
+          Name is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="modele" class="form-label">Modele</label>
+        <input type="text" class="form-control" id="modele" formControlName="modele" required>
+        <div *ngIf="addSmartwatchForm?.get('modele')?.invalid && addSmartwatchForm?.get('modele')?.touched" class="text-danger">
+          Modele is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="os" class="form-label">Operating System</label>
+        <input type="text" class="form-control" id="os" formControlName="os" required>
+        <div *ngIf="addSmartwatchForm?.get('os')?.invalid && addSmartwatchForm?.get('os')?.touched" class="text-danger">
+          Operating System is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="size" class="form-label">Screen size</label>
+        <input type="text" class="form-control" id="size" formControlName="size" required>
+        <div *ngIf="addSmartwatchForm?.get('size')?.invalid && addSmartwatchForm?.get('size')?.touched" class="text-danger">
+          Screen size is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="connectivity" class="form-label">Connectivity</label>
+        <input type="text" class="form-control" id="connectivity" formControlName="connectivity" required>
+        <div *ngIf="addSmartwatchForm?.get('connectivity')?.invalid && addSmartwatchForm?.get('connectivity')?.touched" class="text-danger">
+          Connectivity is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="batteryLife" class="form-label">Battery Life</label>
+        <input type="text" class="form-control" id="batteryLife" formControlName="batteryLife" required>
+        <div *ngIf="addSmartwatchForm?.get('batteryLife')?.invalid && addSmartwatchForm?.get('batteryLife')?.touched" class="text-danger">
+          Battery Life is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="marque" class="form-label">Marque</label>
+        <input type="text" class="form-control" id="marque" formControlName="marque" required>
+        <div *ngIf="addSmartwatchForm?.get('marque')?.invalid && addSmartwatchForm?.get('marque')?.touched" class="text-danger">
+          Marque is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="fonctionnalites" class="form-label">Features</label>
+        <input type="text" class="form-control" id="fonctionnalites" formControlName="fonctionnalites" required>
+        <div *ngIf="addSmartwatchForm?.get('fonctionnalites')?.invalid && addSmartwatchForm?.get('fonctionnalites')?.touched" class="text-danger">
+          Features is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+      <label for="affichage" class="form-label">Display</label>
+      <input type="text" class="form-control" id="affichage" formControlName="affichage" required>
+      <div *ngIf="addSmartwatchForm?.get('affichage')?.invalid && addSmartwatchForm?.get('affichage')?.touched" class="text-danger">
+        Display is required
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="quantite" class="form-label">Quantity</label>
+      <input type="number" class="form-control" id="quantite" formControlName="quantite" required>
+      <div *ngIf="addSmartwatchForm?.get('quantite')?.invalid && addSmartwatchForm?.get('quantite')?.touched" class="text-danger">
+        Quantity is required
+      </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="disponible" class="form-check-label">Available</label>
+      <input type="checkbox" class="form-check-input" id="disponible" name="disponible"
+      formControlName="quantite" />
+        <div *ngIf="addSmartwatchForm?.get('quantite')?.invalid && addSmartwatchForm?.get('quantite')?.touched" class="text-danger">
+          Availability is required
+        </div>
+      
+    </div>
+
+
+    <div class="col-md-6 mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea type="number" class="form-control" id="description" formControlName="description" required> </textarea>
+      <div *ngIf="addSmartwatchForm?.get('description')?.invalid && addSmartwatchForm?.get('description')?.touched" class="text-danger">
+        Description is required
+      </div>
+    </div>
+
+
+
+    <div class="col-md-6 mb-3">
+      <label for="file" class="custom-file-upload">
+        <div class="icon" style="height: 100px;width: 100px;">
+          <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" fill=""></path> </g></svg>
+        </div>
+        <input id="file" type="file" (change)="handleFileInput($event)" formControlName="photo" required>
+      </label>
+      <div *ngIf="addSmartwatchForm?.get('photo')?.invalid && addSmartwatchForm?.get('photo')?.touched" class="text-danger">
+        Photo is required
+      </div>
+      <div *ngIf="selectedImage">
+        <img [src]="selectedImage" alt="Selected Image" class="img-preview">
+        <button class="button" type="button" (click)="clearSelectedFile()">
+          <span class="button__text">Clear</span>
+          <span class="button__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432" y1="112" y2="112"></line><path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256" x2="256" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184" x2="192" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Ajoutez d'autres champs pour le formulaire selon vos besoins -->
+  <div class="modal-footer" style="width: 800px;background-color: white;">
+    <button type="button" class="btn btn-secondary waves-effect" (click)="closeModal()">Cancel</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</form>
+</div>

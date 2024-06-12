@@ -1,0 +1,73 @@
+<!-- addnewEquipement.component.html -->
+
+<div class="modal-header" style="width: 820px; background-color: #2d8cf0">
+  <h5 class="modal-title">Add new fireArm</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+<div class="modal-body" style="width: 820px; background-color: white;">
+<form (ngSubmit)="onSubmit()">
+<div class="form-group">
+  <label for="name">Name:</label>
+  <input type="text" class="form-control" id="name" [(ngModel)]="newEquipement.name" name="name" required>
+</div>
+
+<div class="form-group">
+  <label for="desscription">Description:</label>
+  <input type="text" class="form-control" id="desscription" [(ngModel)]="newEquipement.desscription" name="desscription" required>
+</div>
+
+<div class="form-group">
+  <label for="quantite">Quantity :</label>
+  <input type="number" class="form-control" id="quantite" [(ngModel)]="newEquipement.quantite" name="quantite" required>
+</div>
+
+<div class="form-group">
+  <label for="disponible" class="form-check-label">Availability:</label>
+  <input type="checkbox" class="form-check-input" id="disponible" [(ngModel)]="newEquipement.disponible" name="disponible" required>
+</div>
+
+<div class="form-group">
+  <label for="photo">Photo:</label>
+  <input type="file" class="form-control" id="photo" (change)="onFileSelected($event)" accept="image/*" required>
+
+  <div *ngIf="selectedImage">
+      <img [src]="selectedImage" alt="Selected Image" class="img-preview">
+      <button class="button" type="button" (click)="clearSelectedFile()">
+        <span class="button__text">Clear</span>
+        <span class="button__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432" y1="112" y2="112"></line><path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256" x2="256" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184" x2="192" y1="176" y2="400"></line><line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line></svg></span>
+      </button>
+    </div>
+</div>
+<br>
+
+
+<div class="form-group">
+  <label for="armements">armements:</label>
+  <div *ngFor="let desc of newEquipement.armements; let i = index">
+    <input type="text" class="form-control" id="armements{{i}}" [(ngModel)]="newEquipement.armements[i]" name="armements{{i}}" >
+  </div>
+  <button type="button" class="btn btn-secondary" (click)="addArmements()">Add armements</button>
+</div> <br>
+
+<div class="form-group">
+  <label for="dimensions">dimensions:</label>
+  <div *ngFor="let desc of newEquipement.dimensions; let i = index">
+    <input type="text" class="form-control" id="dimensions{{i}}" [(ngModel)]="newEquipement.dimensions[i]" name="dimensions{{i}}" >
+  </div>
+  <button type="button" class="btn btn-secondary" (click)="adddimensions()">Add dimensions</button>
+</div><br>
+
+<div class="form-group">
+  <label for="accessoires">accessoires:</label>
+  <div *ngFor="let desc of newEquipement.accessoires; let i = index">
+    <input type="text" class="form-control" id="accessoires{{i}}" [(ngModel)]="newEquipement.accessoires[i]" name="accessoires{{i}}" >
+  </div>
+  <button type="button" class="btn btn-secondary" (click)="addaccessoires()">Add accessoires</button>
+</div>
+<div style="display: flex; justify-content: flex-end;">
+
+  <button type="submit" class="btn btn-primary">Save</button> &nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary waves-effect" (click)="closeModal()">Cancel</button>
+</div>
+</form>
+</div>

@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="modal-header">
+    <h5 class="modal-title">To modify a camera</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+
+  <div class="modal-body">
+    <form  #cameraForm="ngForm" (ngSubmit)="saveChanges(cameraForm)">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="cameraData.name" required>
+          </div>
+
+       
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <div *ngFor="let desc of cameraData.description; let i = index">
+              <input type="text" class="form-control mb-2" [(ngModel)]="cameraData.description[i]" name="description{{i}}" required>
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeDescription(i)">Remove</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" (click)="addDescription()">Add Description</button>
+          </div> 
+
+  <div class="mb-3">
+
+    <label for="quantite" class="form-label">Quantity</label>
+    <input type="text" class="form-control" id="quantite" name="quantite" [(ngModel)]="cameraData.quantite" required>
+
+</div>
+
+<div class="mb-3">
+<label for="disponible">Available</label> &nbsp;
+<input type="checkbox" class="form-check-input" id="disponible" [(ngModel)]="cameraData.disponible" name="disponible" >
+</div>
+
+          <div class="mb-3">
+            <label for="modele" class="form-label">Modele</label>
+            <input type="text" class="form-control" id="modele" name="modele" [(ngModel)]="cameraData.modele" required>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="technologie" class="form-label">Technology</label>
+            <input type="text" class="form-control" id="technologie" name="technologie" [(ngModel)]="cameraData.technologie" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="capteur" class="form-label">Capteur</label>
+            <input type="text" class="form-control" id="capteur" name="capteur" [(ngModel)]="cameraData.capteur" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="resolution" class="form-label">Resolution</label>
+            <input type="text" class="form-control" id="resolution" name="resolution" [(ngModel)]="cameraData.resolution" required>
+          </div>
+          </div>
+
+          
+
+        <div class="col-md-4">
+   
+
+          <div class="mb-3">
+            <label for="dimensions" class="form-label">Dimensions</label>
+            <input type="text" class="form-control" id="dimensions" name="dimensions" [(ngModel)]="cameraData.dimensions" required>
+          </div>
+
+
+          <div class="mb-3">
+    
+            <!-- Ajouter le champ photo -->
+             <!-- Ajouter le champ photo actuel -->
+          <label for="currentPhoto">Current Photo</label>
+          <img *ngIf="cameraData.photo" [src]="cameraData.photo" class="img-thumbnail" alt="Current Image" style="max-width: 200px; margin-top: 10px;">
+<br> </div>
+
+<br>
+<div class="mb-3">
+  <!-- Ajouter le champ photo -->
+  <label for="photo">New Photo</label>
+  <input type="file" class="form-control" id="photo" (change)="handleFileInput($event)">
+  <img *ngIf="selectedImage || cameraData.photo" [src]="selectedImage ? selectedImage : cameraData.photo" class="img-thumbnail" alt="Selected Image" style="max-width: 200px; margin-top: 10px;">
+  </div>
+
+        </div>
+      </div>
+      <br>
+      <button type="button" class="btn btn-primary"  [disabled]="!cameraForm.valid">Save changes</button>
+
+    </form>
+    </div>
+ 
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+  </div>
+</div>

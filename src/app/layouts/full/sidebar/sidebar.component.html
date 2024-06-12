@@ -1,0 +1,104 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+
+
+<!--
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected" group="{{menuitem.state}}">
+        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <mat-icon>{{ menuitem.icon }}</mat-icon> 
+            <span>{{ menuitem.name }}</span> 
+            <span fxFlex></span> 
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span> 
+        </a>
+
+        
+    </mat-list-item>
+
+</mat-nav-list>
+-->
+<!--
+<br>
+<div class="menu-container" style="background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+  <mat-nav-list appAccordion>
+    <ng-container *ngFor="let menuitem of menuItems.getMenuitem()">
+      <div class="menu-item" appAccordionLink *ngIf="menuitem.children && menuitem.children.length > 0" [group]="menuitem.state" style="margin-bottom: 10px;">
+        <div class="menu-item" appAccordionToggle (click)="menuItems.toggleMenu(menuitem)" style="display: flex; align-items: center; padding: 12px 16px; cursor: pointer; transition: background-color 0.3s ease;text-decoration: none">
+          <mat-icon class="menu-icon" style="margin-right: 12px; font-size: 20px;text-decoration: none">{{ menuitem.icon }}</mat-icon>
+          <span class="menu-text" style="font-size: 16px; font-weight: 500; color: #333;">{{ menuitem.name }}</span>
+          <mat-icon class="toggle-icon" [ngClass]="{ 'expanded': menuitem.expanded }" style="margin-left: auto; font-size: 24px; transition: transform 0.3s ease;">keyboard_arrow_down</mat-icon>
+        </div>
+        <mat-nav-list class="sub-menu" [attr.id]="menuitem.state" *ngIf="menuitem.expanded" style="display: flex; flex-direction: column; align-items: center;">
+         
+          <div class="sub-menu-item" *ngFor="let child of menuitem.children" [routerLink]="['/', menuitem.state, child.state]" routerLinkActive="selected" style="align-self: flex-start; margin: 8px 0; padding: 8px; transition: background-color 0.3s ease;margin-left:30px;">
+            <a class="" matLine>
+              <mat-icon>{{ child.icon }}</mat-icon>
+              <span>{{ child.name }}</span>
+            </a>
+          </div>
+
+
+        </mat-nav-list>
+      </div>
+      <div class="menu-item" appAccordionLink *ngIf="!menuitem.children || menuitem.children.length === 0" [routerLink]="['/', menuitem.state]" routerLinkActive="selected" [group]="menuitem.state" style="margin-bottom: 10px;">
+        <a class="menu-item" appAccordionToggle (click)="menuItems.toggleMenu(menuitem)" style="display: flex; align-items: center; padding: 12px 16px; cursor: pointer; transition: background-color 0.3s ease;">
+          <mat-icon class="menu-icon" style="margin-right: 12px; font-size: 20px;">{{ menuitem.icon }}</mat-icon> 
+          <span class="menu-text" style="font-size: 16px; font-weight: 500; color: #333;">{{ menuitem.name }}</span> 
+        </a>
+      </div>
+    </ng-container>
+  </mat-nav-list>
+</div>
+
+
+-->
+
+
+
+
+
+
+
+
+<div class='dashboard'>
+
+
+
+  <div class="dashboard-nav">
+    <br><br>
+    <div class="user-profile"
+      style="background: url(assets/images/background/img3.jpg) no-repeat; background-size: cover; background-position: center;height: 150px;">
+
+    </div>
+ 
+
+          
+    <nav class="dashboard-nav-list"><a routerLink="/users" class="dashboard-nav-item active"><i
+          class="fas fa-users"></i> Mission Agents Waiting
+      </a><a routerLink="/users_approuves" class="dashboard-nav-item"><i class="fas fa-users"></i> Approved Mission Agents </a>
+      <div class='dashboard-nav-dropdown'><a routerLink="/" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+       <!-- Votre icône existante -->
+        <i class="fas fa-laptop"></i> <!-- Nouvelle icône "laptop" de Font Awesome -->
+        Equipment IOT
+      </a>
+      
+        <div class='dashboard-nav-dropdown-menu'><a
+            routerLink="/montre_connecte" class="dashboard-nav-dropdown-item">SmartWatch</a><a routerLink="/camera"
+            class="dashboard-nav-dropdown-item">Camera</a></div>
+      </div>
+      <div class='dashboard-nav-dropdown'><a routerLink="/" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+            class="fas fa-laptop"></i> Equipment Terrain </a>
+        <div class='dashboard-nav-dropdown-menu'><a routerLink="/materiels"
+            class="dashboard-nav-dropdown-item">Firearm</a></div>
+      </div>
+
+      <a routerLink="/soldats" class="dashboard-nav-item"><i class="fas fa-users"></i> Soldiers </a><a
+        routerLink="/profile" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile </a>
+      <div class="nav-item-divider"></div>
+      <a routerLink="/login" class="dashboard-nav-item" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </nav>
+  </div>
+
+</div>

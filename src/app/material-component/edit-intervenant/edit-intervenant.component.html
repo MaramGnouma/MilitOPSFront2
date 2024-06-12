@@ -1,0 +1,212 @@
+<div class="container">
+  <h1 style="color: #013B63;text-align: center;">Edit Soldier</h1>
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <!-- Informations utilisateur -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" formControlName="name" type="text" class="form-control" required>
+        </div>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+        <div class="form-group">
+          <label for="genre">Genre</label>
+          <select id="genre" formControlName="genre" class="form-control" required>
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
+          </select>
+        </div>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+
+        <div class="form-group">
+          <label for="genre">Civil Status</label>
+          <select id="genre" formControlName="etatCivil" class="form-control" required>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+          </select>
+        </div>
+        </div>
+      
+          <div class="col-md-6 mb-3">
+        
+
+        <div class="form-group">
+          <label for="datebirth">Date of Birth</label>
+          <input id="datebirth" formControlName="datebirth" type="date" class="form-control" required>
+        </div>
+        </div></div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+        
+        <div class="form-group">
+          <label for="idMilitaire">Military identification </label>
+          <input id="idMilitaire" formControlName="idMilitaire" type="number" class="form-control" required>
+        </div>
+        </div>
+      
+          <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label for="adresse">Adress </label>
+          <input id="adresse" formControlName="adresse" type="adresse" class="form-control" required>
+        </div>
+        </div></div>
+
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label for="telephone">Telephone </label>
+          <input id="telephone" formControlName="telephone" type="telephone" class="form-control" required>
+        </div>
+        </div>
+
+        
+          <div class="col-md-6 mb-3">
+
+        <div class="form-group">
+          <label for="dateEngagement">Date of engagement </label>
+          <input id="dateEngagement" formControlName="dateEngagement" type="date" class="form-control" required>
+        </div>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+
+        <div class="form-group">
+          <label for="unitAffectation">Unit Assignment </label>
+          <input id="unitAffectation" formControlName="unitAffectation" type="text" class="form-control" required>
+        </div>
+        </div>
+   
+
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" formControlName="email" type="email" class="form-control" required>
+            <!-- Afficher un message d'erreur si l'e-mail est invalide -->
+            <div *ngIf="editUserForm.get('email')?.invalid && editUserForm.get('email')?.errors?.invalidEmail" class="text-danger">
+              Please enter a valid email address.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    
+
+          <!-- Compétences -->
+    <div class="form-group">
+      <label for="competences">Competences</label>
+      <div formArrayName="competences">
+        <div *ngFor="let competence of competences.controls; let i = index" [formGroupName]="i" class="competence-item">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" formControlName="nom" placeholder="Nom" required>
+            </div>
+            <div class="col">
+              <select id="niveau" formControlName="niveau" class="form-control" required>
+
+                <option value="excellent">Excellent</option>
+                <option value="moyen">Average</option>
+                <option value="novice">Novice</option>
+                </select>            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeCompetence(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="addCompetence()">Add Competence</button>
+    </div>
+    
+
+
+    <div class="form-group">
+      <label for="specializations">Specializations</label>
+      <div formArrayName="specializations">
+        <div *ngFor="let competence of specializations.controls; let i = index" [formGroupName]="i" class="competence-item">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" formControlName="name" placeholder="name" required>
+            </div>
+            <div class="col">
+              <select id="niveau" formControlName="niveau" class="form-control" required>
+
+                <option value="excellent">Excellent</option>
+                <option value="moyen">Average</option>
+                <option value="novice">Novice</option>
+                </select>            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removespecializations(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="addspecializations()">Add specializations</button>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="certifications">Certifications</label>
+      <div formArrayName="certifications">
+        <div *ngFor="let competence of certifications.controls; let i = index" [formGroupName]="i" class="competence-item">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" formControlName="nom" placeholder="name" required>
+            </div>
+            <div class="col">
+              <input type="date" class="form-control" formControlName="dateObtention" placeholder="dateObtention" required>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removecertifications(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="addcertifications()">Add certifications</button>
+    </div>
+
+
+    <div class="form-group">
+      <label for="experiences">Experiences</label>
+      <div formArrayName="experiences">
+        <div *ngFor="let competence of experiences.controls; let i = index" [formGroupName]="i" class="competence-item">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" formControlName="type" placeholder="Type" required>
+            </div>
+            <div class="col">
+              <input type="date" class="form-control" formControlName="annee" placeholder="annee" required>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeexperiences(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="addexperiences()">Add experiences</button>
+    </div>
+    <!-- Ajoutez le reste des sections de formulaire pour les expériences, spécialisations, certifications, etc. -->
+    
+
+
+
+ 
+    <button type="submit" class="btn btn-success" [disabled]="editUserForm.invalid">Save</button>
+  </form>
+  <br>
+  <button type="submit" class="btn btn-success" (click)="return()">Cancel</button>
+
+</div>

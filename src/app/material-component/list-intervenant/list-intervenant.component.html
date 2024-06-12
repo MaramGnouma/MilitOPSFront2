@@ -1,0 +1,81 @@
+
+
+
+
+<h1>List of  Soldiers</h1>
+
+<div class="d-flex justify-content-end">
+  <!-- Bouton pour ouvrir le modal d'ajout de nouvelle smartwatch -->
+  <button routerLink="/addsoldat">
+  <span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+      Add New Soldier
+  </span>
+
+</button>
+</div>
+<br><br>
+
+
+
+<div class="mat-elevation-z8">
+  <table mat-table matSort [dataSource]="dataSource">
+
+    <!-- Column de la position -->
+    <ng-container matColumnDef="image" >
+      <th mat-header-cell *matHeaderCellDef > Photo </th>
+      <td mat-cell *matCellDef="let inter" ><img [src]="inter.image" style="width: 100px;"></td>
+    </ng-container>
+
+
+    <!-- Column du nom -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let inter"> {{ inter.name }}</td>
+    </ng-container>
+
+    <!-- Column de l'email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let inter">{{ inter.email }} </td>
+    </ng-container>
+
+    <!-- Column du numéro d'identification militaire -->
+   <!-- Column du numéro d'identification militaire -->
+<ng-container matColumnDef="birth">
+<th mat-header-cell *matHeaderCellDef mat-sort-header class="sortable-header">
+<span>Date of Birth</span>
+<button mat-icon-button class="sort-icon-button" (click)="toggleSort('datebirth')">
+<mat-icon>{{ sortBy === 'datebirth' && !ascending ? 'arrow_drop_down' : 'arrow_drop_up' }}</mat-icon>
+</button>
+</th>
+<td mat-cell *matCellDef="let inter"> {{ inter.datebirth | date:'dd/MM/yyyy' }} </td>
+</ng-container>
+
+
+
+    <!-- Column des actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let inter">
+        <span class="icon-container">
+          <i class="fas fa-trash" (click)="supprimer(inter._id)" style="color: rgb(184, 21, 21)"></i>
+        </span>
+        <span class="icon-container">
+          <i class="fa-solid fa-pen-to-square" (click)="modifier(inter._id, inter)"  style="color: #f39c12;"></i>
+        </span>
+        <span class="icon-container">
+          <i class="fas fa-circle-info" mat-button (click)="openDialog(inter._id)" style="color: #013B63;"></i>
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let inter; columns: displayedColumns;"></tr> <!-- Remove the extra *ngFor here -->
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[2, 3, 20]" showFirstLastButtons aria-label="Select a period page
+  "></mat-paginator>
+</div>
+
+

@@ -1,0 +1,145 @@
+<!--
+<h1 class="card-title mb-0">Camera list</h1><br>
+<div class="group">
+  <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+    <g>
+      <path
+        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+      </path>
+    </g>
+  </svg>
+  <input class="input" type="text" placeholder="To search for Camera..." />
+</div><br>
+
+
+<div class="d-flex justify-content-end">
+  <button (click)="openAddSmartwatchModal()" class="btn btn-primary">
+
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+      </svg> Add New Camera
+    </span>
+
+  </button>
+</div>
+
+
+<div class="table-responsive">
+  <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Marque</th>
+        <th>Modele</th>
+        <th>Resolution</th>
+        <th>Type</th>
+        <th>Poids</th>
+        <th>Photo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let camera of cameras; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ camera.name }}</td>
+        <td>{{ camera.marque }}</td>
+        <td>{{ camera.modele }}</td>
+        <td>{{ camera.resolution }}</td>
+        <td>{{ camera.type }}</td>
+        <td>{{ camera.poids }}</td>
+        <td>{{ camera.photo }}</td>
+        <td>
+          <span class="icon-container" (click)="onClickTrashIcon()">
+            <i class="fas fa-trash"></i>
+          </span>
+          <span class="icon-container" (click)="editcamera(camera)">
+            <i class="fas fa-square-check"></i>
+          </span>
+          <span class="icon-container" (click)="navigateToDetail(camera.id)">
+            <i class="fas fa-circle-info"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+-->
+
+
+<h1 class="card-title mb-0">Camera list</h1><br>
+<div class="group" style="margin-left: 40px;">
+  <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+    <g>
+      <path
+        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+      </path>
+    </g>
+  </svg>
+  <input class="input" type="text" placeholder="To search for Camera..." [(ngModel)]="searchTerm" />
+</div><br>
+
+
+<div class="d-flex justify-content-end">
+  <button (click)="addNewCamera()" class="btn btn-primary">
+
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+      </svg> Add New Camera
+    </span>
+
+  </button>
+</div>
+
+<div class="table-responsive" style="margin-left: 50px;width: 1100px;">
+  <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        
+        <th>Modele</th>
+        <th>Availability</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let camera of filterCameras(); let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ camera.name }}</td>
+        
+        <td>{{ camera.modele }}</td>
+     
+        <td>
+          <span [ngClass]="{
+            'badge rounded-pill bg-danger': !camera?.disponible,
+            'badge rounded-pill bg-success': camera?.disponible
+          }">
+            {{ camera?.disponible ? 'Available' : 'Unavailable' }}
+          </span>
+        </td> 
+        <td>
+          <span class="icon-container" (click)="supprimer(camera._id)">
+            <i class="fas fa-trash" style="color: rgb(184, 21, 21)"></i>
+          </span>
+          <span class="icon-container" (click)="editCamera(camera)">
+            <i class="fas fa-square-check" style="color: #f39c12;"></i>
+          </span>
+          <span class="icon-container" (click)="openDetailUser(camera._id)">
+            <i class="fas fa-circle-info" style="color: #013B63;"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
